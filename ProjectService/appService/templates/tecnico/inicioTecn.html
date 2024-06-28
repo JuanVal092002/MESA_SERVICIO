@@ -1,0 +1,24 @@
+{%extends "index.html" %} {%block encabezado%} {% include "encabezado.html"%}
+{%endblock%} {%block menu%} {% include "tecnico/menuTecni.html"%} {%endblock%}
+{%block contenido%}
+<h3 class="text-center mt-3 fw-bold">MÓDULO SOPORTE TÉCNICO</h3>
+<br />
+<div class="row" style="margin: 0 auto !important; width: 55%">
+  <div class="col-sm" style="margin-bottom: 5rem">
+    <a href="/listarCasosAsignados/">
+      <div class="text-center icon" style="font-size: 8rem">
+        <ion-icon name="git-pull-request-outline"class="text-black"></ion-icon>
+      </div>
+    </a>
+    <div class="text-center fw-bold">Ver Solicitudes</div>
+  </div>
+  <div class="col-sm" style="margin-bottom: 5rem">
+    <a href="#">
+      <div class="text-center icon" style="font-size: 8rem">
+        <ion-icon name="newspaper-outline" class="text-black"></ion-icon>
+      </div>
+    </a>
+    <div class="text-center fw-bold">Reportes</div>
+  </div>
+</div>
+{%endblock%} {%block piePagina%} {% include "piePagina.html"%} {%endblock%}

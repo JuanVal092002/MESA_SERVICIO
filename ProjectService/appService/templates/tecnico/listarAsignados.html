@@ -1,0 +1,122 @@
+{%extends "index.html" %} {%block encabezado%} {% include "encabezado.html"%}
+{%endblock%} {%block menu%} {% include "tecnico/menuTecni.html"%} {%endblock%}
+{%block contenido%}
+<div
+  class="container d-flex flex-column justify-content-center align-items-center gap-4"
+>
+  <h3 class="fw-bold text-center pt-2">Lista Casos Asignados</h3>
+  <table class="table table-hover" id="tblCasos">
+    <thead>
+      <tr>
+        <th>Empleado</th>
+        <th>Descripcion</th>
+        <th>Oficina</th>
+        <th>Fecha</th>
+        <th>Estado</th>
+        <th>Accion</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for caso in listarCasos%}
+      <tr>
+        <td>
+          {{caso.solicitud.usuario.first_name}}
+          {{caso.solicitud.usuario.last_name}}
+        </td>
+        <td>{{caso.solicitud.descripcion}}</td>
+        <td>{{caso.solicitud.oficina.nombre}}</td>
+        <td>{{caso.solicitud.fechaHoraCreacion}}</td>
+        <td>{{caso.estado}}</td>
+        <td>
+          <i
+            onclick="agregarIdCaso('{{caso.id}}')"
+            id="abrirModal"
+            class="fa fa-check-square-o"
+            style="color: #ffc400"
+            data-bs-toggle="modal"
+            data-bs-target="#modalTecnico"
+          ></i>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+<!-- The Modal -->
+<div class="modal" id="modalTecnico">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Asignacion De Tecnicos Casos</h4>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+        ></button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <form action="/solucionarCaso/" method="post">
+          {% csrf_token %}
+          <div class="p-3">
+            <div class="">
+              <label for="procedimiento" class="fw-bold">Procedimiento</label>
+              <textarea
+                name="procedimiento"
+                class="form-control"
+                id="floatingTextarea2"
+              ></textarea>
+            </div>
+            <div class="pt-2">
+              <label for="cbTipoSolucion" class="fw-bold">Tipo Solicitud</label>
+              <select
+                name="cbTipoSolucion"
+                id="cbTipoSolucion"
+                class="form-select"
+              >
+                <option value="">Seleccione</option>
+                {%for tipo in listaTipoSolucion%}
+                <option value="{{tipo.0}}">{{tipo.0}}</option>
+                {%endfor%}
+              </select>
+              <label for="cbTipoProcedimiento" class="fw-bold"
+                >Tipo Procedimiento</label
+              >
+              <select
+                name="cbTipoProcedimiento"
+                id="cbTipoProcedimiento"
+                class="form-select"
+              >
+                <option value="">Seleccione</option>
+                {%for tipoP in listarTipoProcedimiento%}
+                <option value="{{tipoP.id}}">{{tipoP.nombre}}</option>
+                {%endfor%}
+              </select>
+            </div>
+          </div>
+
+          <div class="pt-2">
+            <input type="hidden" name="idCaso" id="idCaso" value="" />
+            <button
+              type="submit"
+              class="btn btn-outline-info"
+              data-bs-dismiss="modal"
+            >
+              Asignar
+            </button>
+            <button
+              type="button"
+              class="btn btn-outline-danger"
+              data-bs-dismiss="modal"
+            >
+              Cerrar
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{%endblock%} {%block piePagina%} {% include "piePagina.html"%} {%endblock%}

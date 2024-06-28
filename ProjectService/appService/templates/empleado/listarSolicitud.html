@@ -1,0 +1,36 @@
+{% extends "index.html" %}
+{% block encabezado %}
+{% include "encabezado.html"%}
+{% endblock %}
+{% block menu %}
+{% include "empleado/menuEmple.html"%}
+{% endblock %}
+{% block contenido %}
+<div class="container d-flex flex-column justify-content-center align-items-center gap-4">
+  <h3 class="fw-bold text-center pt-2">Lista De Solicitudes</h3>
+  <div class="table-responsive"> <table class="table table-hover" id="tblCasos">
+      <thead>
+        <tr>
+          <th>Descripcion</th>
+          <th>Oficina</th>
+          <th>Fecha</th>
+          <th>Estado</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for caso in listarSolicitud %}
+        <tr>
+          <td>{{ caso.solicitud.descripcion }}</td>
+          <td>{{ caso.solicitud.oficina.nombre }}</td>
+          <td>{{ caso.solicitud.fechaHoraCreacion }}</td>
+          <td>{{ caso.estado }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}
+{% block piePagina %}
+{% include "piePagina.html"%}
+{% endblock %}

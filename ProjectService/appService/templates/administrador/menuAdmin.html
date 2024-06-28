@@ -1,0 +1,36 @@
+<nav class="navbar navbar-expand-sm navbar-dark bg-secondary">
+  <div class="container-fluid">
+    <a class="navbar-brand d-flex align-items-center" href="/inicioAdministrador/">
+      <img src="/media/{{usuario.foto}}" alt="Foto" style="width: 40px" class="rounded-pill me-2">
+      <span class="fw-bold">{{ user.first_name }} {{ user.last_name }}</span>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="/inicioAdministrador/"><ion-icon name="home-outline"></ion-icon> Inicio</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/listarCasosAsignar/">Lista Casos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/vistaGestionarUsuarios/">Gestion Usuarios</a>
+        </li>
+        <li class="nav-dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+            <ion-icon name="people-circle-outline"></ion-icon> Equipo
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Empleados</a></li>
+            <li><a class="dropdown-item" href="#">Tecnicos</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/salir/"><ion-icon name="exit-outline"></ion-icon> Salir</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

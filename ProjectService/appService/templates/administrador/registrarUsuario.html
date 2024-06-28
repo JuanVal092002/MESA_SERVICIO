@@ -1,0 +1,68 @@
+{% extends "index.html" %}
+{% block encabezado %}
+{% include "encabezado.html"%}
+{% endblock %}
+{% block menu %}
+{% include "administrador/menuAdmin.html"%}
+{% endblock %}
+{% block contenido %}
+<div class="container mt-5">
+  <div class="card shadow rounded border-0">
+    <div class="card-header bg-primary text-light">
+      <h3 class="card-title fw-bold">REGISTRAR USUARIO</h3>
+    </div>
+    <div class="card-body">
+      <form id="registrarUsuario" action="/registrarUsuario/" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="row mb-3">
+          <div class="col-md-4">
+            <label for="nombre" class="form-label fw-bold">Nombres</label>
+            <input type="text" name="nombre" class="form-control" id="nombre" placeholder="Nombre" required>
+          </div>
+          <div class="col-md-4">
+            <label for="apellido" class="form-label fw-bold">Apellidos</label>
+            <input type="text" name="apellido" class="form-control" id="apellido" placeholder="Apellidos" required>
+          </div>
+          <div class="col-md-4">
+            <label for="correo" class="form-label fw-bold">Correo Electrónico</label>
+            <input type="email" name="correo" class="form-control" id="correo" placeholder="Correo Electrónico" required>
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="col-md-6">
+            <label for="cbTipo" class="form-label fw-bold">Tipo Funcionario</label>
+            <select name="cbTipo" id="cbTipo" class="form-select" required>
+              <option value="">Seleccione</option>
+              {% for tipo in tipoUsuario %}
+                <option value="{{ tipo.0 }}">{{ tipo.0 }}</option>
+              {% endfor %}
+            </select>
+          </div>
+          <div class="col-md-6">
+            <label for="cbRol" class="form-label fw-bold">Rol en el Sistema</label>
+            <select name="cbRol" id="cbRol" class="form-select" required>
+              <option value="">Seleccione</option>
+              {% for rol in roles %}
+                <option value="{{ rol.id }}">{{ rol.name }}</option>
+              {% endfor %}
+            </select>
+          </div>
+        </div>
+        <div class="d-flex justify-content-center flex-column gap-2 align-items-center text-center mb-3">
+          <input type="file" name="fileFoto" class="form-control" id="fileFoto" placeholder="Foto" onchange="imagen(event)">
+          <img id="imagen" src="" alt="" style="max-width: 200px; max-height: 200px;" hidden>
+        </div>
+        <div class="d-flex justify-content-center">
+          <button type="submit" class="btn btn-primary me-2">Registrar</button>
+          <a href="/vistaRegistrarUsuario/">
+            <button type="button" class="btn btn-secondary">Cancelar</button>
+          </a>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}
+{% block piePagina %}
+{% include "piePagina.html"%}
+{% endblock %}

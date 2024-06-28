@@ -1,0 +1,100 @@
+
+{% extends "index.html" %}
+{% block encabezado %}
+{% include "encabezado.html"%}
+{% endblock %}
+{% block contenido %}
+<div class="container mt-5 col-4">
+  <div class="card login shadow rounded border-0">
+    <h3 class="text-center fw-bold pt-4">Iniciar Sesión</h3>
+    <form action="login/" class="px-4 pb-4" method="post">
+      {% csrf_token %}
+      <div class="mb-3">
+        <label for="usuario" class="form-label fw-bold">Usuario:</label>
+        <input
+          type="text"
+          name="usuario"
+          id="usuario"
+          class="form-control"
+          required
+        />
+      </div>
+      <div class="mb-3">
+        <label for="password" class="form-label fw-bold">Contraseña:</label>
+        <input
+          type="password"
+          name="password"
+          id="password"
+          class="form-control"
+          required
+        />
+      </div>
+      <div class="mb-3 text-center">
+        <button type="submit" class="btn btn-primary me-2">Aceptar</button>
+        <a href="login/">
+          <button type="button" class="btn btn-secondary">Cancelar</button>
+        </a>
+      </div>
+      <div class="mb-3 text-center">
+        <a
+          href=""
+          id="btnAbrirModal"
+          data-bs-toggle="modal"
+          data-bs-target="#myModal"
+          >¿Olvidaste tu contraseña?</a
+        >
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="modal" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Recuperar Contraseña</h4>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+        ></button>
+      </div>
+
+      <div class="modal-body">
+        <form action="/recuperarClave/" method="post">
+          {% csrf_token %}
+          <div class="d-flex flex-column gap-3">
+            <label for="correo" class="form-label">Correo Electrónico:</label>
+            <input
+              placeholder="Ingresa tu correo electrónico"
+              type="text"
+              name="correo"
+              id="correo"
+              required
+            />
+          </div>
+          <div class="modal-footer">
+            <button
+              type="submit"
+              class="btn btn-primary"
+              data-bs-dismiss="modal"
+            >
+              Recuperar
+            </button>
+            <button
+              type="submit"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Cancelar
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+{% block piePagina %}
+{% include "piePagina.html"%}
+{% endblock %}

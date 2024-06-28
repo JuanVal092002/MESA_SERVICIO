@@ -1,0 +1,29 @@
+{% extends "index.html" %}
+{% block encabezado %}
+{% include "encabezado.html"%}
+{% endblock %}
+{% block menu %}
+{% include "empleado/menuEmple.html"%}
+{% endblock %}
+{% block contenido %}
+<section class="container mt-3">
+  <h3 class="text-center fw-bold">MÓDULO EMPLEADO</h3>
+  <div class="row row-cols-2 row-cols-md-2 g-4">
+    <div class="col text-center d-flex flex-column justify-content-center align-items-center">
+      <a href="/vistaSolicitud/">
+        <ion-icon name="git-pull-request-outline" class="display-1 text-black"></ion-icon>
+      </a>
+      <div class="fw-bold mt-2">Ver Solicitudes</div>
+    </div>
+    <div class="col text-center d-flex flex-column justify-content-center align-items-center">
+      <a href="" style="color: black;">
+        <ion-icon name="list" class="display-1 text-black"></ion-icon>
+      </a>
+      <div class="fw-bold mt-2">Listar Solicitudes</div>
+    </div>
+  </div>
+</section>
+{% endblock %}
+{% block piePagina %}
+{% include "piePagina.html"%}
+{% endblock %}

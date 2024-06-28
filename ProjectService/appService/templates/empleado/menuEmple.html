@@ -1,0 +1,46 @@
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+  <div class="dropdown">
+    <a
+      class="navbar-brand dropdown-toggle"
+      href="#"
+      data-bs-toggle="dropdown"
+    >
+      <img
+        src="/media/{{usuario.foto}}"
+        alt="Foto"
+        style="width: 40px"
+        class="rounded-pill img-fluid"  />
+    </a>
+    <ul class="dropdown-menu" style="width: 300px">  <li>
+        <span class="dropdown-item fw-bold"
+          >{{user.first_name}} {{user.last_name}}</span
+        >
+      </li>
+    </ul>
+  </div>
+  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="/inicioEmpleado/"
+          ><ion-icon name="home-outline"></ion-icon> Inicio</a
+        >
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/vistaSolicitud/"
+          ><ion-icon name="git-pull-request-outline"></ion-icon> Gestionar
+          Solicitud</a
+        >
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/listarSolicitud/"
+          ><ion-icon name="list"></ion-icon> Listar Solicitudes</a
+        >
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/salir/"
+          ><ion-icon name="exit-outline"></ion-icon> Salir</a
+        >
+      </li>
+    </ul>
+  </div>
+</nav>
